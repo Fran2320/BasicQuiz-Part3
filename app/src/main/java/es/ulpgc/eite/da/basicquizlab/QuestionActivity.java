@@ -19,6 +19,8 @@ public class QuestionActivity extends AppCompatActivity {
   public final static String KEY_INDEX_VALUE = "INDEX_VALUE";
   public final static String KEY_SELECTED_BUTTON = "SELECTED_BUTTON";
 
+
+
   private Button falseButton, trueButton,cheatButton, nextButton;
   private TextView questionText, replyText;
 
