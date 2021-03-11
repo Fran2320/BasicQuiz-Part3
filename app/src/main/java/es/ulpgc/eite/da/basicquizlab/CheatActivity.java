@@ -31,19 +31,29 @@ public class CheatActivity extends AppCompatActivity {
 
     getSupportActionBar().setTitle(R.string.cheat_title);
 
+    if(savedInstanceState != null){
+      answerCheated = savedInstanceState.getBoolean(KEY_CHEATED_STATUS);
+
+    }
+
     initLayoutData();
 
     linkLayoutComponents();
+    updateLayoutContent();
     enableLayoutButtons();
   }
 
   private void initLayoutData() {
     currentAnswer = getIntent().getExtras().getInt(EXTRA_ANSWER);
+
+
+
   }
 
   private void linkLayoutComponents() {
     noButton = findViewById(R.id.noButton);
     yesButton = findViewById(R.id.yesButton);
+
 
     answerText = findViewById(R.id.answerText);
   }
@@ -52,6 +62,23 @@ public class CheatActivity extends AppCompatActivity {
 
     noButton.setOnClickListener(v -> onNoButtonClicked());
     yesButton.setOnClickListener(v -> onYesButtonClicked());
+  }
+
+  private void updateLayoutContent(){
+    if(answerCheated == true){
+      if(currentAnswer==1){
+        answerText.setText(R.string.true_text);
+        yesButton.setEnabled(false);
+        noButton.setEnabled(false);
+      }else{
+        answerText.setText(R.string.false_text);
+        yesButton.setEnabled(false);
+        noButton.setEnabled(false);
+      }
+    }else{    //no has pulsado o has pulsado no
+
+      answerText.setText("???");
+    }
   }
 
   private void returnCheatedStatus() {
